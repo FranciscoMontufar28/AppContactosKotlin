@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AppContactosKotlin</string>
+    <string name="titulo_nuevo">Nuevo Contacto</string>
+    <string name="titulo_switch">Cambiar vista</string>
+    <string name="titulo_buscar">Buscar</string>
+    <string name="titulo_edad">Edad</string>
+    <string name="titulo_peso">Peso</string>
+    <string name="titulo_telefono">Telefono</string>
+    <string name="titulo_email">Email</string>
+    <string name="titulo_direccion">Dirección</string>
+</resources>
