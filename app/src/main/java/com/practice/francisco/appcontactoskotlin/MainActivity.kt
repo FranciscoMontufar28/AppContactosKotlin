@@ -22,6 +22,12 @@ class MainActivity : AppCompatActivity() {
         fun obtenerContacto(index:Int):Contacto{
             return contactos?.get(index)!!
         }
+        fun eliminarContacto(index:Int){
+            contactos?.removeAt(index)
+        }
+        fun actualizarContactos(index: Int, nuevoContacto:Contacto){
+            contactos?.set(index, nuevoContacto)
+        }
     }
 
 
