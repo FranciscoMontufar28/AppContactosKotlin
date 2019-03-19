@@ -9,6 +9,7 @@ import android.support.v7.widget.SearchView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.GridView
 import android.widget.ListView
 import android.widget.Switch
 import android.widget.ViewSwitcher
@@ -17,11 +18,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     var lista:ListView? = null
+    var grid:GridView? = null
     var switcherView:ViewSwitcher? =null
 
     companion object {
         var adaptador:AdaptadorCustom? = null
         var contactos:ArrayList<Contacto>? = null
+        var adaptadorGrid:AdaptadorCustomGrid? = null
+
+
         fun agregarContacto(contacto:Contacto){
             //contactos?.add(contacto)
             adaptador?.addItem(contacto)
@@ -54,11 +59,14 @@ class MainActivity : AppCompatActivity() {
         contactos?.add(Contacto("Edinson","Ortega","Seratic Ltda","Software Engineer",28,55.0F,"Popayan","123456789","edinsonortega@seratic.com",R.drawable.foto_03))
         contactos?.add(Contacto("Katherin","Escobar","Seratic Ltda","Software Engineer",23,55.0F,"Popayan","123456789","katherinescobar@seratic.com",R.drawable.foto_04))
         lista = findViewById<ListView>(R.id.lista)
+        grid = findViewById<GridView>(R.id.grid)
         adaptador  = AdaptadorCustom(this, contactos!!)
+        adaptadorGrid = AdaptadorCustomGrid(this, contactos!!)
 
         switcherView = findViewById(R.id.viewSwitcher)
 
         lista?.adapter = adaptador
+        grid?.adapter = adaptadorGrid
 
         lista?.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this, Detalle::class.java)
