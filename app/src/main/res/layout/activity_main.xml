@@ -11,18 +11,27 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:elevation="4dp"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/Theme.AppCompat.Light"
-    />
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="4dp"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/Theme.AppCompat.Light"
+        />
+        <ViewSwitcher
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/viewSwitcher">
 
-    <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/lista"/>
+            <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lista"/>
+            <GridView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/grid"/>
+        </ViewSwitcher>
     </LinearLayout>
 </LinearLayout>

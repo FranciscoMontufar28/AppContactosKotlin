@@ -11,9 +11,11 @@ import android.widget.TextView
 class AdaptadorCustom(var context: Context, items:ArrayList<Contacto>):BaseAdapter(){
 
     var items:ArrayList<Contacto>? = null
+    var copiaItems:ArrayList<Contacto>? = null
 
     init {
-        this.items = items
+        this.items = ArrayList(items)
+        this.copiaItems = items
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -50,6 +52,44 @@ class AdaptadorCustom(var context: Context, items:ArrayList<Contacto>):BaseAdapt
         //Regresar el numero de elementos de la lista
         return this.items?.count()!!
     }
+
+    fun addItem(item:Contacto){
+        copiaItems?.add(item)
+        items = ArrayList(copiaItems)
+        notifyDataSetChanged()
+
+    }
+
+    fun removeItem(index:Int){
+        copiaItems?.removeAt(index)
+        items = ArrayList(copiaItems)
+        notifyDataSetChanged()
+    }
+
+    fun updateItem(index: Int, newItem:Contacto){
+        copiaItems?.set(index, newItem)
+        items = ArrayList(copiaItems)
+        notifyDataSetChanged()
+    }
+
+    fun filtrar(str:String){
+        items?.clear()
+        if(str.isEmpty()){
+            items = ArrayList(copiaItems)
+            notifyDataSetChanged()
+            return
+        }
+        var busqueda = str
+        busqueda = busqueda.toLowerCase()
+        for (item in copiaItems!!){
+            val nombre = item.nombre.toLowerCase()
+            if (nombre.contains(busqueda)){
+                items?.add(item)
+            }
+        }
+        notifyDataSetChanged()
+    }
+
 
     private class ViewHolder(view:View){
         var nombre:TextView? = null
